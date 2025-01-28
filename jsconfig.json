@@ -1,0 +1,10 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules", "docker", "docker_files"],
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "checkJs": true,
+    "strict": true
+  }
+}

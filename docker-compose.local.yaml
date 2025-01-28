@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    hostname: "mongodb"
+    container_name: "mongodb"
+    image: mongo:7.0.8
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - ./docker/volume/mongodb:/data/db
+    healthcheck:
+      test: |
+        test $$(mongosh --quiet --eval "try { rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: '127.0.0.1:27017' }] }).ok } catch (_) { rs.status().ok }") -eq 1
+      interval: 10s
+      start_period: 30s
+    command: >
+      bash -c "mongod --replSet rs0 --bind_ip_all"
