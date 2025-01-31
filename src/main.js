@@ -1,7 +1,7 @@
-import config from "./config";
-import logger from "./logger";
-import { createClient } from "./db";
-import { createServer } from "./server";
+import config from "./config.js";
+import logger from "./logger.js";
+import { createClient } from "./db.js";
+import { createServer } from "./server.js";
 
 async function main() {
   logger.debug(`config: ${JSON.stringify(config, null, 2)}`);
